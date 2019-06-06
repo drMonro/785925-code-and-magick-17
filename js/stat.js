@@ -11,9 +11,9 @@ var BAR_HEIGHT = 150;
 var BAR_WIDTH = 40;
 var SPACES_HEIGHTS = CLOUD_HEIGHT - ((FONT_GAP + GAP) + BAR_HEIGHT);
 
-var renderCloud = function (ctx, x, y, color) {
+var renderCloud = function (ctx, x, y, color, cloudWidth, cloudHeight) {
   ctx.fillStyle = color;
-  ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
+  ctx.fillRect(x, y, cloudWidth, cloudHeight);
 
 };
 
@@ -40,8 +40,8 @@ var sortYourself = function (arr) {
 };
 
 window.renderStatistics = function (ctx, names, times) {
-  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
-  renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
+  renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)', CLOUD_WIDTH, CLOUD_HEIGHT);
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff', CLOUD_WIDTH, CLOUD_HEIGHT);
   ctx.strokeStyle = 'hsla(230, 86%, 48%, 1)';
   ctx.strokeRect(CLOUD_X, CLOUD_Y, CLOUD_WIDTH, CLOUD_HEIGHT);
 
