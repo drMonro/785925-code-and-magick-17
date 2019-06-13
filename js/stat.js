@@ -33,7 +33,6 @@ var renderCloud = function (ctx, x, y, color, cloudWidth, cloudHeight) {
   ctx.fillRect(x, y, cloudWidth, cloudHeight);
 };
 
-
 var renderText = function (ctx, fontColor, fontStyle, text, x, textMargin, y, lineHeight, gap) {
   ctx.fillStyle = fontColor;
   ctx.font = fontStyle;
@@ -42,9 +41,7 @@ var renderText = function (ctx, fontColor, fontStyle, text, x, textMargin, y, li
   lines.forEach(function (line, i) {
     ctx.fillText(line, x + textMargin, y + lineHeight + (gap * 2) * i);
   });
-
 };
-
 
 var sortYourself = function (names, userName) {
   names.forEach(function (name, i) {
@@ -55,7 +52,6 @@ var sortYourself = function (names, userName) {
     }
   });
 };
-
 
 var getMaxElement = function (times) {
   var maxElement = Math.round(times[0]);
@@ -70,11 +66,9 @@ var getMaxElement = function (times) {
   return maxElement;
 };
 
-
 var generateRandomDecimal = function (min, max) {
   return Math.random() * (max - min) + min;
 };
-
 
 var renderBar = function (ctx, i, fontColor, fontStyle, name, x, barGap, barWidth, cloudHeight, fontGap, userName, userColor, minOpacity, maxOpacity, spacesHeight, barHeight, time, maxTime, boldFontStyle, barColorTemplate) {
   ctx.fillStyle = fontColor;
@@ -117,5 +111,4 @@ window.renderStatistics = function (ctx, names, times) {
   names.forEach(function (name, i) {
     renderBar(ctx, i, FONT_COLOR, NAMES_FONT_STYLE, name, CLOUD_X, BAR_GAP, BAR_WIDTH, CLOUD_HEIGHT, FONT_GAP, USER_NAME, USER_COLOR, MAXIMUM_OPACITY, MINIMUM_OPACITY, SPACES_HEIGHT, BAR_HEIGHT, times[i], maxTime, BOLD_FONT_STYLE, BAR_COLOR_TEMPLATE);
   });
-
 };
