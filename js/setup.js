@@ -1,7 +1,5 @@
 'use strict';
 
-var HIDDEN_CLASS = ['hidden'];
-
 var NAMES = [
   'Иван',
   'Хуан Себастьян',
@@ -37,9 +35,9 @@ var RANDOM_WIZARDS = [];
 var WIZARDS_COUNT = 4;
 
 
-var showHiddenBlock = function (hiddenBlock, hiddenClass) {
-  var setupDialog = document.querySelector(hiddenBlock);
-  setupDialog.classList.remove(hiddenClass);
+var showHiddenBlock = function (block) {
+  var setupDialog = document.querySelector(block);
+  setupDialog.classList.remove('hidden');
 };
 
 var generateRandom = function (features) {
@@ -70,7 +68,7 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
 var fragment = document.createDocumentFragment();
 
 
-showHiddenBlock('.setup', HIDDEN_CLASS);
+showHiddenBlock('.setup');
 
 for (var i = 0; i < WIZARDS_COUNT; i++) {
   RANDOM_WIZARDS[i] = generateRandomWizard(NAMES, SURNAMES, COAT_COLORS, EYES_COLORS);
@@ -81,4 +79,5 @@ RANDOM_WIZARDS.forEach(function (randomWizard) {
 });
 
 similarListElement.appendChild(fragment);
-showHiddenBlock('.setup-similar', HIDDEN_CLASS);
+
+showHiddenBlock('.setup-similar');
