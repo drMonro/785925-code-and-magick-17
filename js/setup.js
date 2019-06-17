@@ -60,15 +60,16 @@ var generateWizardsFragment = function (wizard, wizardTemplate) {
   return wizardElement;
 };
 
-var generateWizards = function (wizards, wizardsCount, names, surnames, coatColors, eyesColors) {
+var generateWizards = function (wizardsCount, names, surnames, coatColors, eyesColors) {
+  var wizards = [];
   for (var i = 0; i < wizardsCount; i++) {
     wizards[i] = generateRandomWizard(names, surnames, coatColors, eyesColors);
   }
   return wizards;
 };
 
-var renderWizards = function (wizards, fragment, similarWizardTemplate) {
-  wizards.forEach(function (wizard) {
+var renderWizards = function (generatedWizards, fragment, similarWizardTemplate) {
+  generatedWizards.forEach(function (wizard) {
     fragment.appendChild(generateWizardsFragment(wizard, similarWizardTemplate));
   });
 };
@@ -77,9 +78,7 @@ var renderWizards = function (wizards, fragment, similarWizardTemplate) {
 showHiddenBlock('.setup');
 showHiddenBlock('.setup-similar');
 
-var wizards = [];
-generateWizards(wizards, WIZARDS_COUNT, NAMES, SURNAMES, COAT_COLORS, EYES_COLORS);
-
+var wizards = generateWizards(WIZARDS_COUNT, NAMES, SURNAMES, COAT_COLORS, EYES_COLORS);
 
 var fragment = document.createDocumentFragment();
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
@@ -87,7 +86,6 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .querySelector('.setup-similar-item');
 
 renderWizards(wizards, fragment, similarWizardTemplate);
-
 
 var similarListElement = document.querySelector('.setup-similar-list');
 similarListElement.appendChild(fragment);
