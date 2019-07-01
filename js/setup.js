@@ -48,7 +48,7 @@ var showHiddenBlock = function (block) {
   setupDialog.classList.remove('hidden');
 };
 
-var hiddeBlock = function (block) {
+var hideBlock = function (block) {
   var setupDialog = document.querySelector(block);
   setupDialog.classList.add('hidden');
 };
@@ -57,11 +57,15 @@ var generateRandomIntegerNumber = function (features) {
   return Math.floor(Math.random() * features.length);
 };
 
+var getRandomArrayItem = function (array) {
+  return array[generateRandomIntegerNumber(array)];
+};
+
 var generateRandomWizard = function (names, surnames, coatColors, eyesColors) {
   return {
-    name: names[generateRandomIntegerNumber(names)] + ' ' + surnames[generateRandomIntegerNumber(surnames)],
-    coatColor: coatColors[generateRandomIntegerNumber(coatColors)],
-    eyesColor: eyesColors[generateRandomIntegerNumber(eyesColors)],
+    name: getRandomArrayItem(names) + ' ' + getRandomArrayItem(surnames),
+    coatColor: getRandomArrayItem(coatColors),
+    eyesColor: getRandomArrayItem(eyesColors),
   };
 };
 
@@ -116,8 +120,8 @@ var openPopup = function () {
 };
 
 var closePopup = function () {
-  hiddeBlock('.setup');
-  hiddeBlock('.setup-similar');
+  hideBlock('.setup');
+  hideBlock('.setup-similar');
   document.removeEventListener('keydown', onPopupEscPress);
 };
 
